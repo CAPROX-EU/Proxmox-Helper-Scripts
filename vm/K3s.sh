@@ -408,7 +408,8 @@ qm importdisk $VMID ${FILE} $STORAGE ${DISK_IMPORT:-} 1>&/dev/null
 qm set $VMID \
   -efidisk0 ${DISK0_REF}${FORMAT} \
   -scsi0 ${DISK1_REF},${DISK_CACHE}${THIN}size=2G \
-  -ide2 local:cloud-init.iso \
+  # toto download/create cloud-init.iso
+  -ide0 local:iso/cloud-init.iso,media=cdrom \ 
   -boot order=scsi0 \
   -serial0 socket \
   -description "<div align='center'><a href='https://Helper-Scripts.com'><img src='https://raw.githubusercontent.com/tteck/Proxmox/main/misc/images/logo-81x112.png'/></a>
