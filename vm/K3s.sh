@@ -408,7 +408,7 @@ qm importdisk $VMID ${FILE} $STORAGE ${DISK_IMPORT:-} 1>&/dev/null
 # todo download/create cloud-init.iso / no to it with -ciuseroption pve
 qm set $VMID \
   -efidisk0 ${DISK0_REF}${FORMAT} \
-  -scsi0 ${DISK1_REF},${DISK_CACHE}${THIN}size=20G \
+  -scsi0 ${DISK1_REF},${DISK_CACHE}${THIN},size=20G \
   -ide0 local:iso/seed.img,media=cdrom \
   -serial0 socket \
   -boot order=scsi0 \
