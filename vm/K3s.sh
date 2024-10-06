@@ -408,7 +408,7 @@ qm importdisk $VMID ${FILE} $STORAGE ${DISK_IMPORT:-} 1>&/dev/null
 # todo download/create cloud-init.iso / no to it with -ciuseroption pve
 qm set $VMID \
   -efidisk0 ${DISK0_REF}${FORMAT} \
-  -scsi0 ${DISK1_REF},${DISK_CACHE}${THIN}size=20G \
+  -scsi0 ${DISK1_REF},${DISK_CACHE}${THIN} \
   -ide0 local:iso/seed.img,media=cdrom \
   -serial0 socket \
   -boot order=scsi0 \
@@ -418,6 +418,7 @@ qm set $VMID \
 
   <a href='https://ko-fi.com/D1D7EP4GF'><img src='https://img.shields.io/badge/&#x2615;-Buy me a coffee-blue' /></a>
   </div>" >/dev/null
+qm disk resize $VMID scsi0 20G
 msg_ok "Created a Debian 12 VM ${CL}${BL}(${HN})"
 if [ "$START_VM" == "yes" ]; then
   msg_info "Starting Debian 12 VM"
